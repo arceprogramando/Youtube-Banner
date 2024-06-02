@@ -34,7 +34,7 @@ jobs:
             sed -i "s|<img id=\"youtube-banner\" src=\"[^\"]*\"|<img id=\"youtube-banner\" src=\"$BANNER_URL\"|g" README.md
           fi
 
-       - name: Commit changes
+      - name: Commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -44,4 +44,3 @@ jobs:
           else
             git commit -m "feat(image):🌈 New banner"
             git push
-          fi
