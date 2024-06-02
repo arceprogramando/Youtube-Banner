@@ -1,0 +1,46 @@
+name: Update README with YouTube Banners
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Esto se ejecuta todos los días a la medianoche UTC
+  push:
+    branches:
+      - main
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Pull latest changes
+        run: git pull origin main
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Fetch YouTube Banners
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          CHANNEL_ID="UC3Dnra3CWle6GRayNRWiS1g"
+          RESPONSE=$(curl -s "https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&id=${CHANNEL_ID}&key=${YOUTUBE_API_KEY}")
+          BANNER_URL=$(echo $RESPONSE | jq -r '.items[0].brandingSettings.image.bannerExternalUrl')
+
+          if [ -n "$BANNER_URL" ]; then
+            sed -i "s|<img id=\"youtube-banner\" src=\"[^\"]*\"|<img id=\"youtube-banner\" src=\"$BANNER_URL\"|g" README.md
+          fi
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "feat(banner):🎨 Updated YouTube banner"
+            git push
