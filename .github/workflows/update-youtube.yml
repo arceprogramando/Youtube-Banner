@@ -2,7 +2,7 @@ name: Update README with YouTube Banners
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Esto se ejecuta todos los días a la medianoche UTC
+    - cron: '0 0 * * *' 
   push:
     branches:
       - main
@@ -34,7 +34,7 @@ jobs:
             sed -i "s|<img id=\"youtube-banner\" src=\"[^\"]*\"|<img id=\"youtube-banner\" src=\"$BANNER_URL\"|g" README.md
           fi
 
-      - name: Commit changes
+       - name: Commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -42,5 +42,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "feat(banner):🎨 Updated YouTube banner"
+            git commit -m "feat(image):🌈 New banner"
             git push
+          fi
