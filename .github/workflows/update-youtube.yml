@@ -44,3 +44,4 @@ jobs:
           else
             git commit -m "feat(image):🌈 New banner"
             git push
+          fi
