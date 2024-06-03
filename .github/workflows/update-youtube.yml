@@ -2,7 +2,7 @@ name: Update README with YouTube Banners
 
 on:
   schedule:
-    - cron: '0 0 * * *' 
+    - cron: '0 0 * * *' # Se ejecuta diariamente a medianoche UTC
   push:
     branches:
       - main
@@ -14,26 +14,30 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Asegúrate de usar la versión de Node.js que necesitas
+
       - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq
+        run: npm install
 
-      - name: Fetch YouTube Banners
-        env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: |
-          CHANNEL_ID="UC3Dnra3CWle6GRayNRWiS1g"  # Reemplaza con tu propio ID de canal
-          RESPONSE=$(curl -s "https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&id=${CHANNEL_ID}&key=${YOUTUBE_API_KEY}")
-          BANNER_URL=$(echo "$RESPONSE" | jq -r '.items[0].brandingSettings.image.bannerExternalUrl')
+      - name: Run Development Script
+        run: npm run dev
 
-          if [ -n "$BANNER_URL" ]; then
-            sed -i "s|<img id=\"youtube-banner\" src=\"[^\"]*\"|<img id=\"youtube-banner\" src=\"$BANNER_URL\"|g" README.md
-            git config --global user.name 'github-actions[bot]'
-            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            git add README.md
-            git commit -m "feat(image):🌈 New banner" || echo "No changes to commit."
-            git push origin main
+      - name: Check for Changes
+        id: git-check
+        run: |
+          if git diff --staged --exit-code; then
+            echo "::set-output name=changed::false"
           else
-            echo "Error: Could not fetch YouTube banner URL."
+            echo "::set-output name=changed::true"
           fi
+
+      - name: Commit Changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit -am "Update README with latest YouTube banners"
+          git push
