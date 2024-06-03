@@ -18,6 +18,6 @@ export const fetchAndGenerateThumbnails = async (channelId, apiKey) => {
     // y retorno las constantes con los datos recuperados en un objeto
     return { mainVideo, lastVideos };
   } catch (error) {
-    throw new Error ('Ocurrio un problema', error.message, error)
+    throw new Error(`Ocurrió un problema: ${error.message}`);
   }
 };
