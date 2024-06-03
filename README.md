@@ -1,17 +1,22 @@
+texto anterior
 
+hoaldasdad
+
+<div class="Youtube-Content">
 # Canal de YouTube
 
 ## Video de Presentación
 
 [![Presentación](https://i.ytimg.com/vi/gMdIe9Mk14g/hqdefault.jpg)](https://www.youtube.com/watch?v=gMdIe9Mk14g)
 
-## Últimos Videos
+## Últimos Videos de mi [canaldeyoutube](https://www.youtube.com/channel/UC3Dnra3CWle6GRayNRWiS1g)
 
-
-### Video 1
-
-[![Video 1](https://i.ytimg.com/vi/0E5gy7QtGpI/hqdefault.jpg)](https://www.youtube.com/watch?v=0E5gy7QtGpI)
-
-### Video 2
-
-[![Video 2](https://i.ytimg.com/vi/JXkM0OvlTH0/hqdefault.jpg)](https://www.youtube.com/watch?v=JXkM0OvlTH0)
+<a href='https://www.youtube.com/watch?v=0E5gy7QtGpI' target='_blank'>
+  <img width='30%' src='https://i.ytimg.com/vi/0E5gy7QtGpI/hqdefault.jpg' alt='Últimos videos 0' />
+</a>
+<a href='https://www.youtube.com/watch?v=JXkM0OvlTH0' target='_blank'>
+  <img width='30%' src='https://i.ytimg.com/vi/JXkM0OvlTH0/hqdefault.jpg' alt='Últimos videos 1' />
+</a>
+<a href='https://www.youtube.com/watch?v=NeB2b8PwmnA' target='_blank'>
+  <img width='30%' src='https://i.ytimg.com/vi/NeB2b8PwmnA/hqdefault.jpg' alt='Últimos videos 2' />
+</a></div>

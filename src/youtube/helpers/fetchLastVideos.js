@@ -1,6 +1,6 @@
 export const fetchLastVideos = async (channelId, apiKey) => {
   try {
-      const quantityVideos = 2;
+      const quantityVideos = 3;
       const endpoint =`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet&order=date&maxResults=${quantityVideos}`
     
       const response = await fetch(endpoint);
