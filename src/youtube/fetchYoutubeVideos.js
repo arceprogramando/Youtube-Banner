@@ -14,6 +14,7 @@ export const fetchAndGenerateThumbnails = async (channelId, apiKey) => {
     const mainVideo = await fetchChannelPresentationVideo(channelId, apiKey);
     const lastVideos = await fetchLastVideos(channelId, apiKey);
 
+    console.log('llego hasta aca')
     // y retorno las constantes con los datos recuperados en un objeto
     return { mainVideo, lastVideos };
   } catch (error) {
