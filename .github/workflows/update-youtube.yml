@@ -20,6 +20,14 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Check Environment Variables
+        run: |
+          echo "CHANNEL_ID: $CHANNEL_ID"
+          echo "YOUTUBE_API_KEY: $YOUTUBE_API_KEY"
+        env:
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+
       - name: Run Development Script
         run: npm run dev
         env:
@@ -36,4 +44,4 @@ jobs:
           else
             git commit -m "Update YouTube banners"
             git push
-          fi
+          if
