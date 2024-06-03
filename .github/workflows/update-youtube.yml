@@ -1,8 +1,8 @@
-name: Update README with YouTube Banners
+name: Update Banners
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Se ejecuta diariamente a medianoche UTC
+    - cron: '0 0 * * *' # Esto se ejecuta todos los días a la medianoche UTC
   push:
     branches:
       - main
@@ -14,10 +14,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16' # Asegúrate de usar la versión de Node.js que necesitas
+      - name: Pull latest changes
+        run: git pull origin main
+      
+      - name: Update Banners Images URL
+        run: |
 
       - name: Install Dependencies
         run: npm install
@@ -25,19 +26,15 @@ jobs:
       - name: Run Development Script
         run: npm run dev
 
-      - name: Check for Changes
-        id: git-check
-        run: |
-          if git diff --staged --exit-code; then
-            echo "::set-output name=changed::false"
-          else
-            echo "::set-output name=changed::true"
-          fi
 
-      - name: Commit Changes
-        if: steps.git-check.outputs.changed == 'true'
+      - name: Commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git commit -am "Update README with latest YouTube banners"
-          git push
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "feat(image):🌈 New banner"
+            git push
+          fi
