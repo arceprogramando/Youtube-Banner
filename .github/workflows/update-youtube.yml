@@ -17,15 +17,14 @@ jobs:
       - name: Pull latest changes
         run: git pull origin main
       
-      - name: Update Banners Images URL
-        run: |
-
       - name: Install Dependencies
         run: npm install
 
       - name: Run Development Script
         run: npm run dev
-
+        env:
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
       - name: Commit changes
         run: |
@@ -35,6 +34,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "feat(image):🌈 New banner"
+            git commit -m "Update YouTube banners"
             git push
           fi
