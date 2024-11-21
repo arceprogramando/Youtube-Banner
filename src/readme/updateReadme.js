@@ -11,7 +11,7 @@ export const updateReadme = async (data) => {
 
 [![Presentación](${mainVideo.thumbnail})](${mainVideo.url})
 
-## Últimos Videos de mi [canaldeyoutube](https://www.youtube.com/channel/UC3Dnra3CWle6GRayNRWiS1g)
+## Últimos Videos de mi [Canal De Youtube](https://www.youtube.com/channel/UC3Dnra3CWle6GRayNRWiS1g)
 `;
 
     lastVideos.forEach((video, index) => {

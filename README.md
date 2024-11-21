@@ -5,7 +5,7 @@
 
 [![Presentación](https://i.ytimg.com/vi/gMdIe9Mk14g/hqdefault.jpg)](https://www.youtube.com/watch?v=gMdIe9Mk14g)
 
-## Últimos Videos de mi [canaldeyoutube](https://www.youtube.com/channel/UC3Dnra3CWle6GRayNRWiS1g)
+## Últimos Videos de mi [Canal De Youtube](https://www.youtube.com/channel/UC3Dnra3CWle6GRayNRWiS1g)
 
 <a href='https://www.youtube.com/watch?v=g3byp3sllzw' target='_blank'>
   <img width='30%' src='https://i.ytimg.com/vi/g3byp3sllzw/hqdefault.jpg' alt='Últimos videos 1' />
