@@ -18,14 +18,17 @@
 </a>
 </div>
 
-# Ejemplo de archivo .env
+## Ejemplo de archivo .env
 
-# ID del canal de YouTube (reemplázalo con el ID de tu propio canal)
-# Puedes encontrar el ID de tu canal en la siguiente URL:
-# https://www.youtube.com/account_advanced
-CHANNEL_ID=UCdQXZq45DjbD8r4HRfPL32g
+- **ID del canal de YouTube**  
+  Reemplázalo con el ID de tu propio canal. Puedes encontrar el ID de tu canal en la siguiente URL:  
+  https://www.youtube.com/account_advanced
 
-# Clave de API de YouTube (reemplázala con tu propia clave de API generada en la consola de Google Cloud)
-# Para obtener una clave de API, ve a:
-# https://console.cloud.google.com/
-YOUTUBE_API_KEY=AIzaSyD-Kfmnk2Z9Q48t9Aqk71Vg7MvZYPD4zM8
+  CHANNEL_ID=UCdQXZq45DjbD8r4HRfPL32g
+
+- **Clave de API de YouTube**  
+  Reemplázala con tu propia clave de API generada en la consola de Google Cloud.  
+  Para obtener una clave de API, ve a:  
+  https://console.cloud.google.com/
+
+  YOUTUBE_API_KEY=AIzaSyD-Kfmnk2Z9Q48t9Aqk71Vg7MvZYPD4zM8
